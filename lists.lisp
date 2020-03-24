@@ -19,7 +19,7 @@
   (read-line *query-io*))           ; read-line reads that line input from the user
 
 ;; Create the prompt for the user
-(defun prompt-for-cd ()  ;This creates a function for creating a prompt
+(defun prompt-for-cd ()  ; This creates a function for creating a prompt
   (make-cd               ; Calls on make-cd to send what will be input
    (prompt-read "Title") ; Inserts title, you get the idea
    (prompt-read "Artist")
@@ -39,3 +39,22 @@
                                         ; ~19t is for tabulating, similar to in C with "\t", used to create nice tahs
                                         ; ~{ is for lists
                                         ; ~% is for newline, similar to C's "\n"
+
+;; Query the db with select
+(defun select (query)
+  (remove-if-not
+   (lambda (cd) (equal (getf cd :artist) query)) *db*))
+
+
+;; SAving the Database
+(defun save-db (filename)
+  (with-open-file (out filename
+                       :direction :output
+                       :if-exists :supersede)   ; If File Exists then overwrite
+   (with-standard-io-syntax (print *db* out)))) ; Optional: print out the db when saved
+
+;; Load the db you saved
+(defun load-db (filename)                   ; set load-db to a function that accespts a sting argument
+  (with-open-file (in filename)             ; open file specified
+                  (with-standard-io-syntax  ; set to the standard io syntax
+                   (setf *db* (read in))))) ; setf will set the database for the session to the one specified
