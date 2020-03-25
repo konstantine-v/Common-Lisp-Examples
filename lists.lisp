@@ -43,15 +43,21 @@
 ;; Query the db with select
 (defun select (query)
   (remove-if-not
-   (lambda (cd) (equal (getf cd :artist) query)) *db*))
+   (lambda (cd)
+     (equal (getf cd :artist) query) *db*)))
 
+(defun where (&key title artist rating (ripped nil ripped-p))
+  #'(lambda (cd)
+      (and
+       (if title    (equl (getf cd :title)  title) t)
+       (if artist   (equl (getf cd :artist) artist) t)
+       (if rating   (equl (getf cd :rating) rating) t)
+       (if ripped-p (equl (getf cd :ripped) ripped) t))))
 
 ;; SAving the Database
-(defun save-db (filename)
-  (with-open-file (out filename
-                       :direction :output
-                       :if-exists :supersede)   ; If File Exists then overwrite
-   (with-standard-io-syntax (print *db* out)))) ; Optional: print out the db when saved
+(defun save-db (filename)                                                 ; Function called save-db that takes in argument for filename string
+  (with-open-file (out filename :direction :output :if-exists :supersede) ; If File Exists then overwrite
+   (with-standard-io-syntax (print *db* out))))                           ; Optional: print out the db when saved
 
 ;; Load the db you saved
 (defun load-db (filename)                   ; set load-db to a function that accespts a sting argument
