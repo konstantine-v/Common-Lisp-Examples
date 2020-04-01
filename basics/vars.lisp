@@ -93,7 +93,8 @@
 ;; (incf incval 10) ; === (setf x (+ x 10))
 
 ;;;; Summary of Variables
-(setf         test 12)
+;(setf         test 12)
+;(setq         test 12)
 ;(let          test-two 12)
 (defvar       *test* 12)
 (defparameter *test-two* 12)
