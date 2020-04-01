@@ -1,11 +1,17 @@
 # Common Lisp Practice
+Some cleanup to this repository, as I want to organize both how and what I'm
+learning.
 
-This is just a simple repository where I'll create version control for what I'm
-learning in Common Lisp.
+### Directories
+The directory structure will be simple as it'll follow what I'm working on.
+Within each directory there will be all the `.lisp` files and a README in each
+on giving more context as to what is within (in case you or myself forget?). 
 
-I'm using the book Practical Common Lisp at the time of creating this
-repository.
+- basic/ - All the work from the 'Practical Common Lisp Programming' book
+- challenges/ - From the '/g/ Programming Challenges list v1.4e'
+- landoflisp/ - Examples and works from the 'Land of Lisp' book
+- org/ - Any org notes taken to expand upon what I've learned
 
-Any org files will be put into an `org` directory, to make notes on what I've
-learning so others can reference and learn as well.
-
+This will change as I continue to learn more in regards to lisp, this structure
+at least allows me to know what I'm working on easier and keep it clean all
+within one project directory/repository.
