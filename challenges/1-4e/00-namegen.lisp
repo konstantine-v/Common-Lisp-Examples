@@ -3,7 +3,7 @@
 ;; Basic Goals: First Name, Last name, Age
 ;; Bonus Goals: Username, Address, email, etc...
 
-Create Lists of preset first and last names
+;; Create Lists of preset first and last names
 (defvar *first-names*
   (list "Jim" "Bill" "Steve" "Joe" "Mark"))
 (defvar *last-names*
