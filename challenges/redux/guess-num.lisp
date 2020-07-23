@@ -23,7 +23,7 @@
 
 (defun correct () ; tells the cpu that you've won and prints stats
   (format t "~%Correct! The Number was ~a~%" *guess*)
-  (format t "~%It took you ~a guesses to figure that out.~%" *guesses*))
+  (format t "~%It took the program ~a guesses to figure that out.~%" *guesses*))
 
 ;; BONUS: add prompt to start again after correct or when (start-over)
 ;; Cleanup output of (guess-my-number)
