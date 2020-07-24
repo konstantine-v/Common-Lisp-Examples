@@ -5,10 +5,12 @@ I enjoy using lisp so having a place that I can work within is nice and have as 
 * Directories
 The directory structure will be simple as it'll follow what I'm working on.
 Within each directory there will be all the `.lisp` files and a README in each on giving more context as to what is within (in case you or myself forget?).
-- basic/ - All the work from the 'Practical Common Lisp Programming' book
-- challenges/ - From the '/g/ Programming Challenges list v1.4e and v2'
-- landoflisp/ - Examples and works from the 'Land of Lisp' book
-- org/ - Any org notes taken to expand upon what I've learned
+- ~./basic/~ - All the work from the 'Practical Common Lisp Programming' book
+- ~./challenges/~ - From the '/g/ Programming Challenges
+  - [[https://wiki.installgentoo.com/wiki/File:V1p4e.jpg][1.4e]] - Follows v1.4ε
+  - [[https://wiki.installgentoo.com/wiki/File:V2.png][2.0]] - Follows v2.0
+- ~./landoflisp/~ - Examples and works from the 'Land of Lisp' book
+- ~./org/~ - Any org notes taken to expand on what I've learned
 This will change as I continue to learn more in regards to lisp, this structure at least allows me to know what I'm working on easier and keep it clean all within one project directory/repository.
 * Implementation
 This project uses SBCL for running these programs, and the intent is for compatibility with SLIME in Emacs, a lot of older books being written for SBCL, and also how portable the code is on other systems that aren't Linux--based
