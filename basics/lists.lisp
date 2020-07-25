@@ -38,7 +38,7 @@
 (append *lis* (list 5 6)) ; => (1 2 3 4 5 6)
 
 ;; NCONC
-;; returns a concatination of its list arguments.
+;; returns a concatenation of its list arguments.
 (nconc *lis* (list 7 8)) ; => (1 2 3 4 5 6 7 8)
 ;; it's similar to append except that it actually sets the CDR of the list rather than just append
 
