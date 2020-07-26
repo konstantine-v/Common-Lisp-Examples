@@ -11,7 +11,7 @@
           ((= random-var 1) (setq next-words (nth (random (length word-verbs)) word-verbs)))
           ((= random-var 2) (setq next-words (nth (random (length word-other)) word-other)))))
       (push next-words final-sent))
-    (format nil "~{~a~^ ~}" final-sent)))
+    (format t "~{~a~^ ~}" final-sent)))
 
 ;; Notes
 ;; There's a bug which I can't seem to figure out and that's when you rerun the function in the REPL
