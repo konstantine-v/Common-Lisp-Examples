@@ -4,9 +4,8 @@
 (defvar *dealer*  0) ; The dealer starts with 0
 
 (defmacro deal-card-to (x)
-  "Deal 'cards' to X, card being a random num 1-10"
-  `(setf ,x (+ ,x (random 10))))
-;Currently doesn't take into account the card probability yet
+  "Deal 'cards' to X, card being a random num 1-10, doesn't take into account probability"
+  `(setf ,x (+ ,x (+ 1 (random 10)))))
 
 (defun show-scores()
   (format t "You: ~s~%Dealer: ~s~%" *me* *dealer*))
@@ -23,10 +22,10 @@
   (reset-game)
   (format t "The game is over, play again with BLACKJACK-START~%"))
 
-;; (defun dubs()
-;;   (if (and (> *me* 9) (= *turn* 1))
-;;       (dotimes (i 2) (deal-card-to *me*))
-;;       "Cannot do double, sorry..."))
+(defun call-double()
+  (if (and (> *me* 9) (= *turn* 1))
+      (dotimes (i 2) (deal-card-to *me*))
+      "Cannot call double, sorry..."))
 
 (defun bust()
   (format t "Bust, you went over 21...~%Dealer Wins!~%")
@@ -40,11 +39,11 @@
       (show-scores)))
 
 (defun stay()
-  ;; Loop (setf dealer (+ dealer (random 10)))
-  ;; Not sure how many to loop through
-  ;; If dealer goes over or is under then player wins
-  ;; If dealer gets closer to 21 then dealer wins
-  )
+  (loop while (< *dealer* 17)
+        do (if (< *dealer* 17) (deal-card-to *dealer*)))
+  (cond ((> *dealer* 21) (format t "You Win!!~%") (end-game))
+        ((and (< *dealer* 21) (> *dealer* *me*)) (format t "Dealer Wins...~%") (end-game))
+        ((< *dealer* *me*) (win))))
 
 (defun blackjack-start ()
   "Start game with initial dealing of cards"
@@ -52,5 +51,10 @@
   (reset-game)
   (dotimes (i 2) (deal-card-to *me*))
   (deal-card-to *dealer*)
-  (show-scores)
-  (format t "It's your turn to HIT, STAY, DUBS for double, or END-GAME~%"))
+  (if (> *me* 21)
+      (bust)
+      (show-scores))
+  (format t "It's your turn to HIT, STAY, CALL-DOUBLE for double, or END-GAME~%"))
+
+;; Notes
+;; Bonus for this would be to add card probability
