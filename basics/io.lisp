@@ -1,8 +1,7 @@
 ;;;; Files and File I/O
 ;;;; Learning how to access files from the REPL to the system's file ststem
 
-(defvar *covid-file* "~/.cache/corona-formatted")
-(defvar *covid* nil)
+(defparameter *covid-file* "~/.cache/covid_stats") ; based on my covid data bash script
 
 (defun read-file-as-lines (filename)
   "Read file into a list of lines."
