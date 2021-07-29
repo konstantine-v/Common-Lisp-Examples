@@ -1,0 +1,14 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+
+(defun fact (n)
+  (if (zerop n)
+      1
+      (* n (fact (1- n)))))
+
+(defun main (n &rest argv)
+  (declare (ignore argv))
+  (format t "~&Factorial ~D = ~D~%" n (fact (parse-integer n))))
