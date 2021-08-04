@@ -16,3 +16,5 @@ MAX being the amount of items you want in the list."
 ;; I find it better to have all the numbers displayed in list
 
 ;; Bonus: Plot to GnuPlot
+;; Stop of the last three numbers are (4 2 1)
+;; Create list of bolleans representing the even and odd values
