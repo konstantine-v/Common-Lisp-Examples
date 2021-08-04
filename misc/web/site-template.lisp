@@ -16,7 +16,7 @@
 
 ;;; Site Params
 (defvar global-charset "utf-8")
-(defparameter *global-style-local* t) ;;Sets the global stylesheet
+(defparameter *global-style-local* nil) ;;Sets the global stylesheet
 
 ;;; SEO Tags
 (defparameter *seo-description* "Some long description")
@@ -94,7 +94,7 @@
 (define-easy-handler (example3 :uri "/x3") ()
   (with-html-output-to-string (s)
     (html-template "Example 3 title"
-                   '('something 'here))))
+                   (:p "something here"))))
 
 (start (make-instance 'easy-acceptor
                       :port 8081
