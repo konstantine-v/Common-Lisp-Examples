@@ -16,6 +16,7 @@
 
 ;; Trying out using loop logic
 (defun alt-fizzbuzz ()
+  "Fizzbuzz utilizing loop specific functions"
   (loop :for x :from 1 :upto 100
         :when (zerop (mod x 15))
           :do (format t "~a, " "fizzbuzz")
@@ -25,9 +26,12 @@
           :do (format t "~a, " "buzz")
         :do (format t "~a, " x)))
 
+;; Note: I find that the :for flag is better to read out than just the word
+
 ;; Better method for the loop logic
 ;; It's obviously nicer to return a list rather than formated text in most cases
 (defun better-alt-fizzbuzz ()
+  "Fizzbuzz utilizing loop specific functions and collecting into a list"
   (loop :for x :from 1 :upto 100
         :when (zerop (mod x 15))
           :collect "fizzbuzz"
@@ -36,3 +40,15 @@
         :when (zerop (mod x 3))
           :collect "buzz"
         :collect x))
+
+(defun recursive-fizzbuzz (x)
+  "Trying out recursion"
+  (cond ((zerop (mod x 15)) (and "fizzbuzz"
+                                 (another-fizz (setq x (+ x 1))))
+         (zerop (mod x 3)) (and "fizz"
+                                (another-fizz (setq x (+ x 1))))
+         (zerop (mod x 5)) (and "buzz"
+                                (another-fizz (setq x (+ x 1))))
+         (eq x 100) x
+         (t (and x
+                 (another-fizz (setq x (+ x 1))))))))
